@@ -1,5 +1,6 @@
-import { SWRConfig } from 'swr'
-import fetch from '../lib/fetchJson'
+import { SWRConfig } from 'swr';
+import fetch from '../lib/fetchJson';
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (

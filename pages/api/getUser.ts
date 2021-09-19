@@ -11,9 +11,26 @@ if (admin.apps.length === 0) {
 
 const db = admin.firestore();
 
+interface Response {
+  success: boolean;
+  failCause?: string;
+  data?: Object;
+}
 
-export default async function getUser(req:NextApiRequest, res:NextApiResponse) {
-  const getData = await db.collection('SoftsquirrelAccounts').doc('Fffff9').get();
-  const data = getData.data();
-  res.status(200).json({data});
+export default async function getUser(req:NextApiRequest, res:NextApiResponse<Response>) {
+  const {username, password, signup} = JSON.parse(req.body);
+  const getData = db.collection('SoftsquirrelAccounts').doc(username);
+  const doc = await getData.get();
+  const data = doc.data();
+  if (!doc.exists && signup === true) {
+    await getData.set({
+      username, password, 
+      PPP: {
+        activated:true
+      }
+    })
+    res.status(200).json({data, success:true});
+    } if (!signup) {
+    res.status(200).json({data, success:true});
+    }
 }

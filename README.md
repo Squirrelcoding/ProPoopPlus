@@ -13,3 +13,17 @@ Pro poop+ is a new blog/social media platform where the content creator known as
 
 ### Dev branch (a1.0)
 - Added a sample md file and Authentication w/ Iron session.
+
+### Dev branch (a2.0)
+Lots of things were changed and added!
+- ***Added user authentication!!!***
+- Basic post feed
+- Basic post blog viewer
+
+## The login Process
+This took a while to implement and some parts are still not finished such as creating the account info in the database.
+<img src="https://i.imgur.com/a3SEKP0.png" width="800px" height="400px">
+
+
+## note to self
+- Change cookie secret for production!

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React from 'react'
 import Link from 'next/link'
 import useUser from '../lib/useUser'
@@ -19,9 +20,10 @@ const Header = () => {
           {!user?.isLoggedIn && (
             <li>
               <Link href="/login">
-                <a>Login</a>
+                <a>Log in</a>
               </Link>
             </li>
+            
           )}
           {user?.isLoggedIn && (
             <>

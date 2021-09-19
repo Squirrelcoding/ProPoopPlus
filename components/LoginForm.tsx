@@ -2,16 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {useState} from 'react';
 import axios from 'axios';
-const Form = ({ errorMessage, onSubmit }) => {
+const LoginForm = ({ errorMessage, onSubmit }) => {
   const url = "http://localhost:3000";
   const [msg, setMsg] = useState("");
   async function myFunc(e:any) {
     e.preventDefault();
-    const validCode = await axios.post(`${url}/api/validate`, {
-      code: (e.target.activation.value)
+    console.log("ummm... hellloooo????")
+    const validCredintals = await axios.post(`${url}/api/validateCredintals`, {
+      username: (e.target.username.value),
+      password: (e.target.password.value)
     });
-    if (e.target.password.value !== e.target.confirmPassword.value || validCode.data.success === false) {
-      setMsg("Failed to create Account. Maybe your passwords dont match or your activation code is invalid.");
+    console.log(validCredintals.data.valid)
+    if (validCredintals.data.valid === false) {
+      console.log("Set message")
+      setMsg("Invalid credentials or No Such User!");
     } else {
       await onSubmit(e);
     }
@@ -22,11 +26,8 @@ const Form = ({ errorMessage, onSubmit }) => {
     <label>
       <span>Username</span>
       <input type="text" name="username" required />
-      <span>Password and Confirm Password</span>
+      <span>Password</span>
       <input type="password" name="password" required />
-      <input type="password" name="confirmPassword" required />
-      <span>Activation Code</span>
-      <input type="text" name="activation" required />
     </label>
 
     <button type="submit">Login</button>
@@ -57,9 +58,9 @@ const Form = ({ errorMessage, onSubmit }) => {
   )
 }
 
-export default Form
+export default LoginForm
 
-Form.propTypes = {
+LoginForm.propTypes = {
   errorMessage: PropTypes.string,
   onSubmit: PropTypes.func,
 }

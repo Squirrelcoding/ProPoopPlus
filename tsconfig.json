@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "noImplicitAny": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/fetchJson.js", "lib/session.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/fetchJson.js", "lib/session.js", "pages/api/login.js"],
   "exclude": ["node_modules"]
 }

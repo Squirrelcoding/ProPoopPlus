@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useUser from '../lib/useUser'
 import Layout from '../components/Layout'
-import LoginForm from '../components/LoginForm'
+import Form from '../components/Form'
 import fetchJson from '../lib/fetchJson'
 const url = 'http://localhost:3000';
 
@@ -17,7 +17,10 @@ const Login = () => {
     e.preventDefault();
     const body = {
       usernameFromClient: e.target.username.value,
+      activationCode: e.target.activation.value,
       password: e.target.password.value,
+      password2: e.target.confirmPassword.value,
+      signup: true
     }
     console.log(`login.tsx: ${body.usernameFromClient}`)
     try {
@@ -36,8 +39,8 @@ const Login = () => {
   return (
     <Layout>
       <div className="login">
-        <LoginForm errorMessage={errorMsg} onSubmit={handleSubmit} />
-      </div>  
+        <Form errorMessage={errorMsg} onSubmit={handleSubmit} />
+      </div>
       <style jsx>{`
         .login {
           max-width: 21rem;
