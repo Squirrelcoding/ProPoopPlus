@@ -22,8 +22,18 @@ Lots of things were changed and added!
 
 ## The login Process
 This took a while to implement and some parts are still not finished such as creating the account info in the database.
-<img src="https://i.imgur.com/a3SEKP0.png" width="800px" height="400px">
+<img src="https://i.imgur.com/a3SEKP0.png" width="790px" height="400px">
 
+### Dev branch (a3.0)
+- Added playlists!
+- Added video section!
+- Added some CSS!
+- ***NEW LOGO!!!***
 
+<p align="center"><img src="https://i.imgur.com/XJg0aEW.png" width="200px" height="200px"></p>
+<p align="center"><i>Pro Poop+ Logo</i></p>
+
+<br/>
+<br/>
 ## note to self
 - Change cookie secret for production!

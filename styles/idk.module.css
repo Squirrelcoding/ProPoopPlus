@@ -1,0 +1,32 @@
+.title {
+  float: right;
+  margin-left: 10px;
+  
+}
+.date {
+  float: right;
+  margin-left: 10px;
+  color: #5a5a5c;
+}
+.thumbnail {
+  float: left;
+}
+
+.videoCard {
+  display: flex;
+  align-items: center;
+  display: inline-block;
+  padding: 5px;    
+}
+
+.videoCardContent {
+  flex: 0 0 500;
+  padding: 15px;
+}
+
+.playlist {
+  overflow-x: scroll;
+  width: auto;
+  white-space: nowrap;
+}
+
