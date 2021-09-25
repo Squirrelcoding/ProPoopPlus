@@ -39,6 +39,7 @@ const LoginForm = ({ errorMessage, onSubmit }) => {
       label {
         display: flex;
         flex-flow: column;
+        color: white;
       }
       label > span {
         font-weight: 600;

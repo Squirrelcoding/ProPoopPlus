@@ -9,17 +9,12 @@ export default withSession(async (req, res) => {
     username: usernameFromClient, password, signup
   }
   const url = `${host}/api/getUser`
-  console.log(`login.js [server]: ${usernameFromClient}`)
 
   try {
     const myData = await fetchJson(url, {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    console.log("========== login.js ==========")
-    console.log(myData.username);
-    console.log(myData)
-    console.log("==============================")
     const user = { username: myData.data.username, activated:myData.data.PPP.activated };
     req.session.set('user', user);
     await req.session.save();

@@ -1,0 +1,21 @@
+.video {
+  margin: auto;
+  width: 50%;
+  position: relative;
+  top: 30px;
+}
+
+.title {
+  text-align: center;
+}
+
+
+.description {
+  text-align: center;
+  font-size: 15px;
+  color: rgb(110, 110, 110);
+}
+
+.datePosted {
+  text-align: center;
+}

@@ -30,10 +30,18 @@ This took a while to implement and some parts are still not finished such as cre
 - Added some CSS!
 - ***NEW LOGO!!!***
 
+### Dev branch (a4.0)
+- Added dedicated page to play videos
+- Removed debug console.logs
+- Fixed signup bugs
+- Made Pro poop+ logo the favicon rather than the default NextJS one.
+- Did some CSS that will break on different screen sizes.
+
 <p align="center"><img src="https://i.imgur.com/XJg0aEW.png" width="200px" height="200px"></p>
 <p align="center"><i>Pro Poop+ Logo</i></p>
 
 <br/>
 <br/>
+
 ## note to self
 - Change cookie secret for production!

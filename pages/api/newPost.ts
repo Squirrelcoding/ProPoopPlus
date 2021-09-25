@@ -36,7 +36,6 @@ export default async function request(req:NextApiRequest, res:NextApiResponse<Re
         id
       }
     }, {merge:true})
-    console.log(content);
     res.status(200).json({
       msg: "Got request!"
     });
@@ -50,20 +49,14 @@ export default async function request(req:NextApiRequest, res:NextApiResponse<Re
 
       //If playlist doesn't exist
       if (!doc.data()?.[playlist]) {
-        console.log("[SERVER newPost.ts] detected as new playlist")
         await newRef.set({
           [playlist]: [time]
         }, {merge:true});
       } else {
-        console.log("[SERVER newPost.ts] detected as existing playlist.")
         const data = await newRef.get();
         const doc = data.data();
         let arrayVids = doc?.[playlist];
-        console.log(arrayVids)
-        console.log(`[SERVER newPost.ts] [DEBUG] time: ${time}`);
         arrayVids.push(time);
-        console.log("[SERVER newPost.ts] [DEBUG] Array: ");
-        console.log(arrayVids);
         await newRef.update({
           [playlist]: arrayVids
         });

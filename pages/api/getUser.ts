@@ -15,6 +15,7 @@ interface Response {
   success: boolean;
   failCause?: string;
   data?: Object;
+  newData?: Object;
 }
 
 export default async function getUser(req:NextApiRequest, res:NextApiResponse<Response>) {
@@ -28,7 +29,9 @@ export default async function getUser(req:NextApiRequest, res:NextApiResponse<Re
       PPP: {
         activated:true
       }
-    })
+    });
+    const newDoc = await getData.get();
+    const data = newDoc.data();
     res.status(200).json({data, success:true});
     } if (!signup) {
     res.status(200).json({data, success:true});

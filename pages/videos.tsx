@@ -6,8 +6,6 @@ import Styles from '../styles/idk.module.css';
 import Playlist from '../components/Playlist';
 const url = 'http://localhost:3000';
 const videos = ({ data, playlists }) => {
-  console.log(data);
-  console.log(playlists);
   return (
     <body>
       <h1>Videos</h1>
@@ -56,9 +54,7 @@ const videos = ({ data, playlists }) => {
 export const getServerSideProps:GetServerSideProps = async (ctx) => {
   const data = await axios.get(`${url}/api/getVids`);
   const playlists = await axios.get(`${url}/api/getPlaylists`);
-  console.log("playlists:");
-  console.log(playlists.data.info);
-  console.log("=======================")
+
   return {
     props:{
       data:data.data,

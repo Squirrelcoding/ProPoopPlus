@@ -8,7 +8,7 @@ const Form = ({ errorMessage, onSubmit }) => {
   async function myFunc(e:any) {
     e.preventDefault();
     const validCode = await axios.post(`${url}/api/validate`, {
-      code: (e.target.activation.value)
+      code: (e.target.activation.value), username:e.target.username.value
     });
     if (e.target.password.value !== e.target.confirmPassword.value || validCode.data.success === false) {
       setMsg("Failed to create Account. Maybe your passwords dont match or your activation code is invalid.");
@@ -38,6 +38,7 @@ const Form = ({ errorMessage, onSubmit }) => {
       label {
         display: flex;
         flex-flow: column;
+        color: white;
       }
       label > span {
         font-weight: 600;

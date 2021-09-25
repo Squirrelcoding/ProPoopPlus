@@ -15,7 +15,6 @@ export default async function route(req:NextApiRequest, res:NextApiResponse) {
   const ref = db.collection('SoftsquirrelAccounts').doc(username);
   const doc = await ref.get();
   const data = doc.data();
-  console.log("[DEBUG] Do passwords match? " + password !== data?.password)
   //Check if the user exists.
   if (!doc.exists) {
     res.status(200).json({valid:false});

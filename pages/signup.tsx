@@ -22,7 +22,6 @@ const Login = () => {
       password2: e.target.confirmPassword.value,
       signup: true
     }
-    console.log(`login.tsx: ${body.usernameFromClient}`)
     try {
       mutateUser(
         await fetchJson(`${url}/api/login`, {

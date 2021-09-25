@@ -11,7 +11,6 @@ const Post = () => {
       time: unixTime,
       video: false
     });
-    console.log(reqres.data);
     event.target.content.value = ""
   }
   async function newVideo(event:any) {
@@ -48,7 +47,7 @@ const Post = () => {
       <hr/>
       <form onSubmit={newVideo}>
         <input type="text" id="title" placeholder="Enter title here" required/>
-        <input type="text" id="vidURL" placeholder="Enter URL to video here" required/>
+        <input type="text" id="vidURL" placeholder="Enter Video ID" required/>
         <input type="text" id="playlist" placeholder="Playlist (Leave blank for no playlist)"/>
         <textarea id="description" rows={10} cols={50} placeholder="Enter content here" required></textarea><br/>
         <input type="submit"/>

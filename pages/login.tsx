@@ -18,8 +18,8 @@ const Login = () => {
     const body = {
       usernameFromClient: e.target.username.value,
       password: e.target.password.value,
+      signup:false
     }
-    console.log(`login.tsx: ${body.usernameFromClient}`)
     try {
       mutateUser(
         await fetchJson(`${url}/api/login`, {

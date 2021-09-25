@@ -12,7 +12,6 @@ const theme = createTheme({
 const URL = 'http://localhost:3000'
 const feed = ({data}) => {
   
-  console.log(data.keys);
   if (!data) {
     return (
       <p>Loading...</p>
