@@ -2,7 +2,8 @@
 import { GetServerSideProps } from 'next';
 import Markdown from 'markdown-to-jsx';
 import Card from '@mui/material/Card';
-import axios from 'axios'
+import axios from 'axios';
+import '../../styles/post.module.css';
 function PostContent ({data}) {
 
     return (
@@ -14,7 +15,7 @@ function PostContent ({data}) {
         top: '50%',
         transform: 'translate(-50%, -50%)'
     }}>
-        <Card>
+        <Card sx={{ backgroundColor : "#14181c", color:'white', paddingLeft:'10px', paddingRight:'2px' }}>
             <Markdown>{data}</Markdown>
         </Card>
         </div>

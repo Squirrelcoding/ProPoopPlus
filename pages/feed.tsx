@@ -1,4 +1,3 @@
-import Header from "../components/Header"
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import Card from '@mui/material/Card';
@@ -19,12 +18,12 @@ const feed = ({data}) => {
   }
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <p>hi</p>
-      {data.keys.map((answer:any, i:number) => {     
+      {data.keys.map((answer:any, i:number) => {
            // JSX inside of JSX  
            return (
+             
              <div key={i}>
+              <br/>
              <Card  variant="outlined" sx={{
                backgroundColor:'#2f2f2f'
              }}>

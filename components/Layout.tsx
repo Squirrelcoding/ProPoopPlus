@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import Header from './Header'
 import PropTypes from 'prop-types'
 
 const Layout = ({ children }) => (
@@ -29,7 +28,6 @@ const Layout = ({ children }) => (
         padding-right: 1rem;
       }
     `}</style>
-    <Header />
 
     <main>
       <div className="container">{children}</div>

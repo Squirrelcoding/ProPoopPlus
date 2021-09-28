@@ -12,33 +12,40 @@ const Header = () => {
     <header>
       <nav>
         <ul>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
+          {/* SVG doesnt work. */}
+          <li><a href="/">
+           <img src="https://i.imgur.com/m9yKUMd.png" width="30px" height="30px"/>
+          </a></li>
           {!user?.isLoggedIn && (
             <li>
               <Link href="/login">
                 <a>Log in</a>
               </Link>
-            </li>
-            
+            </li>            
+          )}
+          {!user?.isLoggedIn && (
+            <li>
+              <Link href="/signup">
+                <a>Sign up</a>
+              </Link>
+            </li>            
           )}
           {user?.isLoggedIn && (
             <>
               <li>
-                <Link href="/profile-sg">
-                  <a>
-                    <img src={user.avatarUrl} width={20} height={20} /> Profile
-                    (Static Generation, recommended)
-                  </a>
-                </Link>
+              <Link href="/feed">
+                <a>Community Posts & blog</a>
+              </Link>
               </li>
               <li>
-                <Link href="/profile-ssr">
-                  <a>Profile (Server-side Rendering)</a>
-                </Link>
+              <Link href="/videos">
+                <a>Videos</a>
+              </Link>
+              </li>
+              <li>
+              <Link href="/announcements">
+                <a>Announcements</a>
+              </Link>
               </li>
               <li>
                 <a
@@ -57,26 +64,21 @@ const Header = () => {
               </li>
             </>
           )}
-          <li>
-            <a href="https://github.com/vvo/next-iron-session">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="32" height="32" />
-            </a>
-          </li>
         </ul>
       </nav>
       <style jsx>{`
         ul {
           display: flex;
           list-style: none;
-          margin-left: 0;
-          padding-left: 0;
+          margin-right: 0;
+          padding-right: 0;
         }
         li {
-          margin-right: 1rem;
+          margin-left: 1rem;
           display: flex;
         }
         li:first-child {
-          margin-left: auto;
+          margin-left: -20px;
         }
         a {
           color: #fff;
@@ -85,7 +87,10 @@ const Header = () => {
           align-items: center;
         }
         a img {
-          margin-right: 1em;
+          margin-left: 10px;
+        }
+        img:hover {
+          cursor: pointer;
         }
         header {
           padding: 0.2rem;

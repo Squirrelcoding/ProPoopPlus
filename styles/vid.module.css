@@ -1,12 +1,12 @@
 .video {
-  margin: auto;
-  width: 50%;
-  position: relative;
-  top: 30px;
+  display:block;
+  margin: 0 auto;
 }
+
 
 .title {
   text-align: center;
+  position:relative;
 }
 
 
@@ -18,4 +18,13 @@
 
 .datePosted {
   text-align: center;
+}
+
+@media (max-width: 850px) {
+  .video {
+    margin: auto;
+    display: block;
+    width: 500px;
+    height: 300px;
+  }
 }

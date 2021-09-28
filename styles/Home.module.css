@@ -1,4 +1,50 @@
-.container {
+.title {
+  font-size: 75px;
+  float:left;
+}
+
+.titleDIV {
+  word-wrap: break-word;
+  width: 500px;
+}
+
+.lightDiv {
+  background-color: #3b3c3d;
+  overflow: auto;
+  display: flex;
+  height:250px;
+  align-items: center;  justify-content: center;
+  vertical-align:middle;
+}
+.aDiv {
+  overflow: auto;
+  height:250px;
+  align-items: center;  
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.leftEl {
+  float: left;
+}
+.rightEl {
+  float: right
+}
+
+.textBreak {
+  word-wrap: break-word;
+  width: 750px;
+}
+
+.daImage {
+  float: right;
+  margin: 0 auto;
+}
+.daImage2 {
+  float: left;
+  margin: 20px;
+}
+/* .container {
   min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
@@ -118,4 +164,4 @@
     width: 100%;
     flex-direction: column;
   }
-}
+} */

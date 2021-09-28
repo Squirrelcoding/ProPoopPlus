@@ -30,12 +30,14 @@ export default async function request(req:NextApiRequest, res:NextApiResponse<Re
     const {time, content} = req.body;
     const ref = db.collection('PPP-Posts').doc('posts');
     const id = makeid(8);
+    console.log("[SERVER DEBUG newPost.ts] time: " + time);
+    console.log("[SERVER DEBUG newPost.ts] content: " + content);
     await ref.set({
       [time]: {
         content,
         id
       }
-    }, {merge:true})
+    }, {merge:true});
     res.status(200).json({
       msg: "Got request!"
     });

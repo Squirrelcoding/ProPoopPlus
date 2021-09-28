@@ -1,14 +1,26 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import React from 'react';
 import Styles from '../styles/idk.module.css';
 import Playlist from '../components/Playlist';
+import useUser from '../lib/useUser';
+import NotLoggedIn from '../components/NotLoggedIn';
+import { useRouter } from "next/router";
+
 const url = 'http://localhost:3000';
 const videos = ({ data, playlists }) => {
+  const { user } = useUser({ redirectTo: false })
+
+  if (!user || user.isLoggedIn === false) {
+    return (
+      <NotLoggedIn/>
+    )
+  }
   return (
     <body>
-      <h1>Videos</h1>
+      <h1 className={Styles.leText}>Videos</h1>
       {
         Object.keys(playlists).map((key:any,i:number) => {
           return (

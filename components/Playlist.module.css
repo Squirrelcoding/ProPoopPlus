@@ -1,0 +1,12 @@
+.title {
+  margin:20px;
+}
+@media (max-width: 620px) {
+  .leText {
+    text-align:center;
+  }
+  .videoCard {
+    margin: auto;
+    width: 50%;
+  }
+}

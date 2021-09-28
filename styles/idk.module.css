@@ -3,6 +3,11 @@
   margin-left: 10px;
   
 }
+
+.leText {
+  margin-left: 15px;
+}
+
 .date {
   float: right;
   margin-left: 10px;
@@ -19,6 +24,10 @@
   padding: 5px;    
 }
 
+.videoCard:hover {
+  cursor: pointer;
+}
+
 .videoCardContent {
   flex: 0 0 500;
   padding: 15px;
@@ -30,3 +39,12 @@
   white-space: nowrap;
 }
 
+@media (max-width: 620px) {
+  .leText {
+    text-align:center;
+  }
+  .videoCard {
+    margin: auto;
+    width: 50%;
+  }
+}

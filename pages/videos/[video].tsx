@@ -14,9 +14,7 @@ const Video = ({ data }) => {
   }
   return (
     <main>
-      <div className={Styles.video}>
-      <iframe width="734" height="413" src={`https://www.youtube.com/embed/${data.vidID}?modestbranding=1&rel=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowFullScreen></iframe>
-      </div>
+      <iframe className={Styles.video} width="734" height="413" src={`https://www.youtube.com/embed/${data.vidID}?modestbranding=1&rel=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture" allowFullScreen></iframe>
       <br/>
       <h3 className={Styles.title}>{data.title}</h3>
       <p className={Styles.datePosted}>{toReadableTime(data.posted)}</p>

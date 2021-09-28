@@ -1,14 +1,15 @@
 import axios from 'axios';
 import { useState } from 'react';
 const Post = () => {
-  const unixTime = +new Date;
   const url = "http://localhost:3000";
   async function sendRequest(event: any) {    
     event.preventDefault();
+    console.log("[DEBUG CLIENT] post.tsx: timetamp: " + Date.now());
     const content = event.target.content.value;
-    const reqres = await axios.post(`${url}/api/newPost`, {
+    console.log("[DEBUG CLIENT] post.tsx: content:: " + content);
+    await axios.post(`${url}/api/newPost`, {
       content,
-      time: unixTime,
+      time: Date.now(),
       video: false
     });
     event.target.content.value = ""
@@ -28,7 +29,7 @@ const Post = () => {
       title: event.target.title.value,
       videoUrl: event.target.vidURL.value,
       description: event.target.description.value,
-      time: +new Date(),
+      time: Date.now(),
       video: true,
       playlist
     }
