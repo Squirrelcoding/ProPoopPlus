@@ -4,8 +4,18 @@ import Markdown from 'markdown-to-jsx';
 import Card from '@mui/material/Card';
 import axios from 'axios';
 import '../../styles/post.module.css';
+import useUser from '../../lib/useUser';
+import NotLoggedIn from '../../components/NotLoggedIn';
 function PostContent ({data}) {
+    const { user } = useUser({ redirectTo: false })
 
+    if (!user || user.isLoggedIn === false) {
+      return (
+        <NotLoggedIn/>
+      )
+    } else if (user.activated === false) {
+      <NotLoggedIn/>
+    }
     return (
     <main>
         <br/>

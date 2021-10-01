@@ -25,8 +25,8 @@ interface Response {
   msg: string
 }
 export default async function request(req:NextApiRequest, res:NextApiResponse<Response>) {
-  const {video} = req.body;
-  if (!video) {
+  const {video, blog, announcement} = req.body;
+  if (!video && !blog && !announcement) {
     const {time, content} = req.body;
     const ref = db.collection('PPP-Posts').doc('posts');
     const id = makeid(8);
@@ -35,13 +35,14 @@ export default async function request(req:NextApiRequest, res:NextApiResponse<Re
     await ref.set({
       [time]: {
         content,
-        id
+        id,
+        blog:false
       }
     }, {merge:true});
     res.status(200).json({
       msg: "Got request!"
     });
-  } else {
+  } else if (video){
     const {time, description, title, videoUrl, playlist} = req.body;
     const ref = db.collection('PPP-Posts').doc('vidPosts');
     const id = makeid(8);
@@ -72,6 +73,38 @@ export default async function request(req:NextApiRequest, res:NextApiResponse<Re
     res.status(200).json({
       msg: "Got request!"
     });
+  } else if (blog) {
+    const {title, time, readableTitle} = req.body;
+    const ref = db.collection('PPP-Posts').doc('posts');
+    const id = makeid(8);
+    await ref.set({
+      [time]: {
+        title,
+        id,
+        blog:true,
+        readableTitle
+      }
+    }, {merge:true});
+    res.status(200).json({
+      msg: "Got request!"
+    });
+  } else if (announcement) {
+    console.log("[SERVER DEBUG] newPost.ts: here!")
+    const {title, content, time, important} = req.body;
+    const ref = db.collection('PPP-Posts').doc('announcements');
+    const id = makeid(8);
+    await ref.set({
+      [time]: {
+        title,
+        id,
+        content,
+        time,
+        important
+      }
+    }, {merge:true});
+    res.status(200).json({
+      msg: "Got request!"
+    });   
   }
 
 }

@@ -9,6 +9,7 @@ const Login = () => {
   const { mutateUser } = useUser({
     redirectTo: true,
     redirectIfFound: true,
+    redirectTarget: "videos"
   })
 
   const [errorMsg, setErrorMsg] = useState('')

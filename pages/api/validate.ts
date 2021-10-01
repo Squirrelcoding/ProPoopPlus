@@ -19,6 +19,24 @@ export default async function route(req:NextApiRequest, res:NextApiResponse<Resp
 
   const ref = db.collection('PPP').doc('meta');
   const ref2 = db.collection('SoftsquirrelAccounts').doc(username);
+  async function accumulateCodeUseCount() {
+    var doc = await ref.get();
+    var codeCount: number = await doc.data()?.amountOfTimesTheFreeCodeWasUsed;
+    console.log("[DEBUG validate.ts] codeCount: " + codeCount);
+    await ref.update({
+      amountOfTimesTheFreeCodeWasUsed: codeCount+1
+    });
+  }
+  async function checkIfFreeCodeIsValid() {
+    var doc = await ref.get();
+    var codeCount: number = await doc.data()?.amountOfTimesTheFreeCodeWasUsed;
+    var codeLimit: number = await doc.data()?.codeUseLimit;
+    if (codeCount >= codeLimit) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   const doc = await ref2.get();
   if (doc.exists) {
     res.status(200).json({success:false});
@@ -29,7 +47,18 @@ export default async function route(req:NextApiRequest, res:NextApiResponse<Resp
     for (const i in data?.activationCodes) {
       loopedThrough++;
       if (code === data?.activationCodes[i]) {
-        res.status(200).json({success:true});
+        console.log("code validated!");
+        if (code == "PRO920" && Boolean(checkIfFreeCodeIsValid()) == false) {
+          console.log("code PRO920 is invalid lmao");
+          res.status(200).json({success:false});
+        } else if (code === "PRO920" && Boolean(checkIfFreeCodeIsValid()) == true) {
+          console.log("code is valid!")
+          accumulateCodeUseCount();
+          res.status(200).json({success:true});
+        } 
+        else {
+          res.status(200).json({success:true});
+        }
         break;
       } else if (code !== data?.activationCodes[i] && loopedThrough === length) {
         res.status(200).json({success:false});

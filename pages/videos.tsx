@@ -7,7 +7,6 @@ import Styles from '../styles/idk.module.css';
 import Playlist from '../components/Playlist';
 import useUser from '../lib/useUser';
 import NotLoggedIn from '../components/NotLoggedIn';
-import { useRouter } from "next/router";
 
 const url = 'http://localhost:3000';
 const videos = ({ data, playlists }) => {
@@ -17,6 +16,8 @@ const videos = ({ data, playlists }) => {
     return (
       <NotLoggedIn/>
     )
+  } else if (user.activated === false) {
+    <NotLoggedIn/>
   }
   return (
     <body>
@@ -32,33 +33,6 @@ const videos = ({ data, playlists }) => {
       }
       <div className={Styles.playlist}>
       </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
     </body>
   );
 }

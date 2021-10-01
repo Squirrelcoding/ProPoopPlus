@@ -1,8 +1,18 @@
-import { useRouter } from 'next/router'
 import Styles from '../../styles/vid.module.css';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
+import useUser from '../../lib/useUser';
+import NotLoggedIn from '../../components/NotLoggedIn';
 const Video = ({ data }) => {
+    const { user } = useUser({ redirectTo: false })
+
+  if (!user || user.isLoggedIn === false) {
+    return (
+      <NotLoggedIn/>
+    )
+  } else if (user.activated === false) {
+    <NotLoggedIn/>
+  }
   function toReadableTime(unixTime:number) {
     //https://stackoverflow.com/questions/24875254/javascript-format-date-to-yyyy-mm-dd-from-unixtime
     var date = new Date(unixTime);

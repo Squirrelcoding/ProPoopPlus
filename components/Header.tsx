@@ -4,27 +4,41 @@ import Link from 'next/link'
 import useUser from '../lib/useUser'
 import { useRouter } from 'next/router'
 import fetchJson from '../lib/fetchJson'
+import Badge from '@mui/material/Badge';
+import Button from '@mui/material/Button';
+const Header = ({ amountOfAnnouncements, announcementTimestamps }) => {
+  const url = "http://localhost:3000";
+  const { user, mutateUser } = useUser();
+  const router = useRouter();
 
-const Header = () => {
-  const { user, mutateUser } = useUser()
-  const router = useRouter()
+  function checkIfSameDay() {
+    var iterator = 0;
+    for (var i of announcementTimestamps) {
+      iterator++;
+      if (new Date().toDateString() === new Date(Number(i)).toDateString()) {
+        return true;
+      } if (iterator == announcementTimestamps.length) {
+        return false;
+      }
+    }
+  };
   return (
     <header>
       <nav>
         <ul>
-          {/* SVG doesnt work. */}
-          <li><a href="/">
+          {/* SVG doesnt work so Im going with PNG. */}
+          <li className="left"><a href="/">
            <img src="https://i.imgur.com/m9yKUMd.png" width="30px" height="30px"/>
           </a></li>
           {!user?.isLoggedIn && (
-            <li>
+            <li className="left">
               <Link href="/login">
                 <a>Log in</a>
               </Link>
             </li>            
           )}
           {!user?.isLoggedIn && (
-            <li>
+            <li className="left">
               <Link href="/signup">
                 <a>Sign up</a>
               </Link>
@@ -32,22 +46,29 @@ const Header = () => {
           )}
           {user?.isLoggedIn && (
             <>
-              <li>
+              <li className="left">
               <Link href="/feed">
                 <a>Community Posts & blog</a>
               </Link>
               </li>
-              <li>
+              <li className="left">
               <Link href="/videos">
                 <a>Videos</a>
               </Link>
               </li>
-              <li>
-              <Link href="/announcements">
-                <a>Announcements</a>
-              </Link>
+              <li className="left">
+              <a>Announcements</a>
               </li>
-              <li>
+              <li className="left">
+                {checkIfSameDay() && 
+                 <Badge badgeContent={amountOfAnnouncements} color="error">
+                  <Link href="/announcements">
+                   <a>Announcements</a>
+                 </Link>
+               </Badge>
+                }
+              </li>
+              <li className="left">
                 <a
                   href="/api/logout"
                   onClick={async (e) => {
@@ -62,6 +83,9 @@ const Header = () => {
                   Logout
                 </a>
               </li>
+              <li className="right">
+                 <Button style={{textTransform:"none"}} variant="contained" href="https://github.com/Squirrelcoding/ProPoopPlus/issues">&beta;</Button>
+              </li>
             </>
           )}
         </ul>
@@ -73,12 +97,19 @@ const Header = () => {
           margin-right: 0;
           padding-right: 0;
         }
-        li {
+        li.left {
           margin-left: 1rem;
           display: flex;
         }
-        li:first-child {
+        li.right {
+          margin-right: 1rem;
+          display: flex;
+        } 
+        li.left:first-child {
           margin-left: -20px;
+        }
+        li.right {
+          margin-left: auto;
         }
         a {
           color: #fff;

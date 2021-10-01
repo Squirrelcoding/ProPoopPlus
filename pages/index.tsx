@@ -63,7 +63,7 @@ const home2 = () => {
   <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-          <i>&quot;The image on the homepage crashed my pc with a 3090&quot;</i>
+          <i>&quot;The image on the homepage bricked my PC. It had a 3090.&quot;</i>
         </Typography>
         <Typography variant="body2" color="text.secondary">
           <i> - PC mag</i>

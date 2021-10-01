@@ -13,7 +13,7 @@ const Playlist = ({data, keys, name}) => {
       case 1:
        month = "January"
        break;
-      case 2:
+      case 2: 
        month = "Febuary"
        break;
       case 3: 

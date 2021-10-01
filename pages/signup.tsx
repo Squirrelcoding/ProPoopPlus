@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import useUser from '../lib/useUser'
 import Layout from '../components/Layout'
 import Form from '../components/Form'
-import fetchJson from '../lib/fetchJson'
+import fetchJson from '../lib/fetchJson';
+import Router from 'next/router'
 const url = 'http://localhost:3000';
 
 const Login = () => {
-  const { mutateUser } = useUser({
+
+  const user = useUser({
     redirectTo: true,
     redirectIfFound: true,
-  })
-
+    redirectTarget: 'welcome'
+  });
+    useEffect(() => {
+      if (user.isLoggedIn) {
+        Router.push('videos');
+      }
+    });
   const [errorMsg, setErrorMsg] = useState('')
 
   async function handleSubmit(e:any) {
@@ -23,7 +30,7 @@ const Login = () => {
       signup: true
     }
     try {
-      mutateUser(
+      user.mutateUser(
         await fetchJson(`${url}/api/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

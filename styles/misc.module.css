@@ -1,0 +1,18 @@
+@media (min-width: 620px) {
+  .title {
+    text-align: center;
+  }
+}
+
+.blogCard:hover {
+  border-width: 2px 2px 2px 2px;
+  border-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(206,35,254,1) 0%, rgba(209,23,255,1) 21%, rgba(70,172,235,1) 58%, rgba(82,7,245,1) 79%, rgba(0,212,255,1) 100%);
+  border-image-slice: 9;
+  border-style: solid;
+  transition: .5s ease;
+  cursor:pointer;
+}
+
+.leText {
+  padding: 5px;
+}
